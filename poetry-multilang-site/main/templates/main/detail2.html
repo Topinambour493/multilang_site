@@ -1,0 +1,8 @@
+<body>
+    {% include "./header.html" %}
+    <main>
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.content }}</p>
+        <img src="{{ article.image.url }}" alt="connect" style="max-height:300px">
+    </main>
+</body>

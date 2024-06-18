@@ -9,4 +9,5 @@ def index(request):
 
 def detail(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
-    return render(request, "main/detail.html", {"article": article})
+    # redirects to the detail page corresponding to the article template
+    return render(request, "main/detail" + str(article.template_type) + ".html", {"article": article})
