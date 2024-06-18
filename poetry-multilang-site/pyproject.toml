@@ -10,6 +10,10 @@ packages = [{include = "poetry_multilang_site"}]
 python = "^3.10"
 django = "^5.0.6"
 pillow = "^10.3.0"
+django-rosetta = "^0.10.0"
+tox = "^4.15.1"
+python-gettext = "^5.0"
+django-modeltranslation = "^0.19.3"
 
 
 [build-system]

@@ -4,7 +4,8 @@ from django.shortcuts import get_object_or_404, render
 from .models import Article
 
 def index(request):
-    return HttpResponse("coucou index.")
+    articles = Article.objects.all()
+    return render(request, "main/index.html", {"articles": articles})
 
 def detail(request, article_id):
     article = get_object_or_404(Article, pk=article_id)

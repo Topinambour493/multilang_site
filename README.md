@@ -21,3 +21,8 @@ Pour lancer le projet
 ```
 poetry run python manage.py runserver
 ```
+
+Pour compiler les traductions
+```
+poetry run django-admin compilemessages
+````
