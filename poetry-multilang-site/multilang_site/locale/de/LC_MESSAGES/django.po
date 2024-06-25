@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-18 08:24+0200\n"
-"PO-Revision-Date: 2024-06-18 08:25+0200\n"
+"POT-Creation-Date: 2024-06-25 11:26+0200\n"
+"PO-Revision-Date: 2024-06-25 11:30+0200\n"
 "Last-Translator:   <corentin.jezierski@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,14 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: .\multilang_site\settings.py:137
+#: .\multilang_site\settings.py:144
 msgid "German"
 msgstr "Deutsch"
 
-#: .\multilang_site\settings.py:138
+#: .\multilang_site\settings.py:145
 msgid "English"
 msgstr "Englisch"
 
-#: .\multilang_site\settings.py:139
+#: .\multilang_site\settings.py:146
 msgid "French"
 msgstr "Französisch"

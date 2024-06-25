@@ -10,6 +10,9 @@ Pour initialiser le projet avec poetry
 cd poetry-multilang-site
 poetry install
 ```
+
+Remplir le .env avec vos propres variables en vous basant sur le .env-example présent dans le dossier multilang-site
+
 Toutes les commandes suivantes sont à executer dans le dossier *poetry-multilang-site*
 
 Pour se créer un utlisateur admin qui pourra notamment éditer des articles et traduire:
@@ -25,8 +28,3 @@ Pour lancer le projet
 ```
 poetry run python manage.py runserver
 ```
-
-Pour compiler les traductions
-```
-poetry run django-admin compilemessages
-````

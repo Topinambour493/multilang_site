@@ -4,5 +4,6 @@
         <h1>{{ article.title }}</h1>
         <img src="{{ article.image.url }}" alt="connect" style="max-height:300px">
         <p>{{ article.content }}</p>
+        {% include "./llm.html" %}
     </main>
 </body>

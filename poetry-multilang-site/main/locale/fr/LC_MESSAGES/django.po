@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-18 08:18+0200\n"
-"PO-Revision-Date: 2024-06-18 08:23+0200\n"
+"POT-Creation-Date: 2024-06-25 11:25+0200\n"
+"PO-Revision-Date: 2024-06-25 11:36+0200\n"
 "Last-Translator:   <corentin.jezierski@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -19,6 +19,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Translated-Using: django-rosetta 0.10.0\n"
 
-#: .\main\templates\main\index.html:17
+#: .\main\templates\main\index.html:18
 msgid "No articles are available"
-msgstr "Pas d'articles disponibles"
+msgstr "Aucun article n'est disponible"
+
+#: .\main\templates\main\llm.html:11
+msgid "Chat with Llama3"
+msgstr "Discutez avec Llama3"
+
+#: .\main\templates\main\llm.html:16
+msgid "Type your message"
+msgstr "Ecrivez votre message"
