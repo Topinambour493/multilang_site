@@ -10,6 +10,22 @@ html, body {
 
 body{
     display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+
+
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    padding: 10px 0;
+}
+
+main{
+    display: flex;
     justify-content: center;
 }
 
@@ -19,15 +35,24 @@ body{
     flex-direction: column;
 }
 
+.contain{
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
+}
+
 p {
     max-width: 300px;
+    max-height: 90px;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }
 
 fieldset {
-    max-width: 600px;
+    margin: 10px;
+    max-width: 410px;
     display: flex;
     flex-direction: row;
 }

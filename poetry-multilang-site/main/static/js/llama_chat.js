@@ -1,5 +1,4 @@
 chat = document.getElementById("chat");
-button_send_to_chat = document.getElementById("send-to-chat");
 textarea_chat = document.getElementById("input-chat");
 chat_circle =  document.getElementById("chat-circle");
 chat_box = document.getElementById("container");
@@ -72,12 +71,15 @@ function getCookie(name) {
     return cookieValue;
 }
 
-button_send_to_chat.onclick = function (){
+textarea_chat.onkeyup = function (e){
+    if (e.key !== 'Enter'){
+        return
+    }
     var date = getDate()
     add_message_me(date, textarea_chat.value);
     let message = textarea_chat.value
     textarea_chat.value = "";
-    fetch('/main/get-response?' + new URLSearchParams({
+    fetch('/get-response?' + new URLSearchParams({
         "input-chat": message,
     }).toString())
         .then(res => res.json())

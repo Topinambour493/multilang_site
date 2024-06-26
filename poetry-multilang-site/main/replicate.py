@@ -5,6 +5,17 @@ model_name = "meta/meta-llama-3-8b-instruct"
 
 replicate = replicate.Client(api_token=settings.REPLICATE_TOKEN)
 
+
+class Conversation:
+    def __init__(self):
+        self.messages = []
+
+    def add_message(self, role, message):
+        self.messages.append(f"{role} : {message}")
+
+    def get_full_prompt(self):
+        return "\n".join(self.messages)
+
 def define_inputs(prompt=""):
     return {
         "TOP_P": 0.9,
@@ -15,6 +26,8 @@ def define_inputs(prompt=""):
         "PRESENCE_PENALTY": 0,
         "FREQUENCY_PENALTY": 0
     }
+
+conversation = Conversation()
 
 
 def run_inference(inputs):

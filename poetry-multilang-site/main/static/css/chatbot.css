@@ -4,7 +4,7 @@
 
 body{
 	background-color:#abd9e9;
-	font-family:Arial;
+	font-family: Arial, sans-serif;
 	font-size: 15px;
 }
 
@@ -26,18 +26,19 @@ body{
 	right: 15px;
 }
 
+
+
 #container[scale], #chat-circle[scale] {
 	scale:1;
 }
 
 #chat-box-toggle {
-  float:right;
-  margin-right:15px;
+  float:left;
   cursor:pointer;
 }
 
-h2,h3{
-	margin:0;
+h2{
+	margin-left: 10px;
 }
 
 .status{
@@ -59,17 +60,13 @@ h2,h3{
 	margin-left:7px;
 }
 
-header {
-	display: flex;
-}
-
-header div {
+#container-head div {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 }
 
-header img {
+#container-head  img {
 	padding: 0 5px;
 }
 
@@ -131,11 +128,11 @@ header img {
 		margin-left:375px;
 }
 
-#container footer{
+#container #container-foot{
 	padding:20px 30px 10px 20px;
 }
 
-#container footer textarea{
+#container #container-foot textarea{
 	resize:none;
 	border:none;
 	display:block;
@@ -146,7 +143,7 @@ header img {
 	margin-bottom:13px;
 }
 
-#container footer textarea::placeholder{
+#container #container-foot textarea::placeholder{
 	color:#ddd;
 }
 

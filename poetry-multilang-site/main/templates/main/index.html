@@ -3,20 +3,22 @@
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 <body>
     {% include "./header.html" %}
-    <div id="articles">
-        {% if articles %}
-            {% for article in articles %}
-                <a href="{% url 'main:detail' article.id %}">
-                    <fieldset>
-                        <legend>{{ article.title }}</legend>
-                        <img src="{{ article.image.url }}" alt="connect" style="max-height:300px">
-                        <p>{{ article.content }}</p>
-                    </fieldset>
-                </a>
-            {% endfor %}
-        {% else %}
-            <p>{% translate "No articles are available" %}</p>
-        {% endif %}
-    </div>
+    <main>
+        <div id="articles">
+            {% if articles %}
+                {% for article in articles %}
+                    <a href="{% url 'main:detail' article.id %}">
+                        <fieldset>
+                            <legend>{{ article.title }}</legend>
+                            <img class="contain" src="{{ article.image.url }}" alt="connect" style="max-height:300px">
+                            <p>{{ article.content }}</p>
+                        </fieldset>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <p>{% translate "No articles are available" %}</p>
+            {% endif %}
+        </div>
+    </main>
     {% include "./llm.html" %}
 </body>

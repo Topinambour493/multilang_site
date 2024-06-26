@@ -1,21 +1,22 @@
 {% load static %}
 {% load i18n %}
-<link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
-<div id="chat-circle" scale>
-    <img src="{% static 'images/llama_profile.png' %}" alt="profile_llama">
-</div>
-<div id="container">
-    <header>
-        <img id="chat-box-toggle" src="{% static 'images/llama_profile.png' %}" alt="profile_llama">
-        <div>
-            <h2>{% translate "Chat with Llama3" %}</h2>
+<footer>
+    <link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
+    <div id="chat-circle" scale>
+        <img src="{% static 'images/llama_profile.png' %}" alt="profile_llama">
+    </div>
+    <div id="container">
+        <div id="container-head">
+            <img id="chat-box-toggle" src="{% static 'images/llama_profile.png' %}" alt="profile_llama">
+            <div>
+                <h2>{% translate "Chat with Llama3" %}</h2>
+            </div>
         </div>
-    </header>
-    <ul id="chat"></ul>
-    <footer>
-        <textarea id="input-chat" name="input-chat" value="input-chat" placeholder="{% translate 'Type your message' %}" rows="2"></textarea>
-        <button id="send-to-chat">Envoyer</button>
-    </footer>
-</div>
-<script src="{% static 'js/llama_chat.js' %}"></script>
+        <ul id="chat"></ul>
+        <div id="container-foot">
+            <textarea id="input-chat" name="input-chat" value="input-chat" placeholder="{% translate 'Type your message' %}" rows="1"></textarea>
+        </div>
+    </div>
+    <script src="{% static 'js/llama_chat.js' %}"></script>
+</footer>
 

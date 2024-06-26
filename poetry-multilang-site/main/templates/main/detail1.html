@@ -1,9 +1,14 @@
+{% load static %}
 <body>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+     <link rel="stylesheet" href="{% static 'css/detail.css' %}">
     {% include "./header.html" %}
     <main>
-        <h1>{{ article.title }}</h1>
-        <img src="{{ article.image.url }}" alt="connect" style="max-height:300px">
-        <p>{{ article.content }}</p>
-        {% include "./llm.html" %}
+        <div id="article">
+            <h1>{{ article.title }}</h1>
+            <img class="contain" src="{{ article.image.url }}" alt="connect" style="max-height:300px">
+            <p>{{ article.content }}</p>
+        </div>
     </main>
+    {% include "./llm.html" %}
 </body>
