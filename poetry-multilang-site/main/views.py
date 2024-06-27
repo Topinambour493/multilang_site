@@ -3,7 +3,8 @@ from django.shortcuts import get_object_or_404, render
 from django.http import JsonResponse
 
 from .models import Article
-from .replicate import run_inference, define_inputs, conversation
+from .replicate import run_inference, define_inputs, processing_full_prompt
+import json
 
 def index(request):
     articles = Article.objects.all()
@@ -15,10 +16,7 @@ def detail(request, article_id):
     return render(request, "main/detail" + str(article.template_type) + ".html", {"article": article})
 
 def get_response(request):
-    question = request.GET['input-chat']
-    conversation.add_message("User", question)
-    full_prompt = conversation.get_full_prompt()
+    full_prompt = processing_full_prompt(json.loads(request.GET['full-prompt']))
     inputs = define_inputs(full_prompt)
     response = run_inference(inputs)
-    conversation.add_message("Assistant", question)
     return JsonResponse({'response': response})

@@ -4,9 +4,9 @@ chat_circle =  document.getElementById("chat-circle");
 chat_box = document.getElementById("container");
 chat_box_toggle = document.getElementById("chat-box-toggle");
 
-function add_message_me(datetime, message){
+function add_message_user_in_web(datetime, message){
     var new_message = document.createElement("li");
-    new_message.className = "me";
+    new_message.className = "user";
     new_message.innerHTML = `
         <div class="entete">
             <h3>${datetime}</h3>
@@ -21,7 +21,7 @@ function add_message_me(datetime, message){
     chat.append(new_message);
 }
 
-function add_message_llama3(datetime, message){
+function add_message_llama3_in_web(datetime, message){
     var new_message = document.createElement("li");
     new_message.className = "Llama3";
     new_message.innerHTML = `
@@ -48,53 +48,85 @@ function getDate(){
     return hour + "h" + minute + ", " + day + "/" + month + "/" + year
 }
 
-// button_send_to_chat.onclick = function (){
-//     var date = getDate()
-//     add_message_me(date, textarea_chat.value);
-//     textarea_chat.value = "";
-//     add_message_llama3(date, "coucou mon poulet")
-// }
-
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
+function add_message_in_conversation(message){
+    let conversation = get_full_prompt()
+    conversation.push(message)
+    sessionStorage.setItem("conversation", JSON.stringify(conversation))
 }
 
-textarea_chat.onkeyup = function (e){
+function add_message_llama3_in_conversation(datetime, message){
+    let new_message = {"role": "Assistant", "datetime": datetime, "message": message}
+    add_message_in_conversation(new_message)
+}
+
+function add_message_user_in_conversation(datetime, message){
+    let new_message = {"role": "User", "datetime": datetime, "message": message}
+    add_message_in_conversation(new_message)
+}
+
+function get_full_prompt(){
+    return JSON.parse(sessionStorage.getItem("conversation"))
+}
+
+textarea_chat.onkeyup = async function (e){
     if (e.key !== 'Enter'){
         return
     }
     var date = getDate()
-    add_message_me(date, textarea_chat.value);
+    add_message_user_in_web(date, textarea_chat.value);
+    add_message_user_in_conversation(date, textarea_chat.value);
+    chat.scrollTop = chat.scrollHeight - chat.clientHeight ;
     let message = textarea_chat.value
     textarea_chat.value = "";
-    fetch('/get-response?' + new URLSearchParams({
-        "input-chat": message,
+    await fetch('/get-response?' + new URLSearchParams({
+        "full-prompt": sessionStorage.getItem("conversation"),
     }).toString())
         .then(res => res.json())
         .then(res => {
-            add_message_llama3(date,res.response);
+            add_message_llama3_in_web(date,res.response);
+            add_message_llama3_in_conversation(date,res.response);
         })
+    chat.scrollTop = chat.scrollHeight - chat.clientHeight ;
+}
+
+function toggle_change(){
+    chat_circle.toggleAttribute('scale');
+    chat_box.toggleAttribute('scale');
+    if (sessionStorage.getItem("chatbot-open") === "false")
+        chatbot_open = "true"
+    else
+        chatbot_open = "false"
+    sessionStorage.setItem("chatbot-open", chatbot_open)
+    console.log(sessionStorage.getItem("chatbot-open"))
 }
 
 chat_circle.onclick = function (){
-    chat_circle.toggleAttribute('scale');
-    chat_box.toggleAttribute('scale');
-    console.log(chat_box)
+    toggle_change()
 }
 
+
 chat_box_toggle.onclick = function (){
+    toggle_change()
+}
+
+
+if (sessionStorage.getItem("chatbot-open") === "true"){
     chat_circle.toggleAttribute('scale');
     chat_box.toggleAttribute('scale');
+} else {
+    sessionStorage.setItem("chatbot-open","false")
+}
+
+if (sessionStorage.getItem("conversation")){
+    conversation = get_full_prompt()
+    for (let i = 0; i < conversation.length; i++) {
+      if (conversation[i]["role"] === "User"){
+          add_message_user_in_web(getDate(conversation[i]["datetime"]) , conversation[i]["message"])
+      } else if (conversation[i]["role"] === "Assistant"){
+          add_message_llama3_in_web(getDate(conversation[i]["datetime"]) , conversation[i]["message"])
+      }
+    }
+    chat.scrollTop = chat.scrollHeight - chat.clientHeight ;
+} else {
+    sessionStorage.setItem("conversation","[]")
 }
