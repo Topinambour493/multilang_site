@@ -1,13 +1,13 @@
 {% load static %}
 {% load i18n %}
 <footer>
-    <link rel="stylesheet" href="{% static 'css/chatbot.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/chatbot.css' %}">
     <div id="chat-circle" scale>
-        <img src="{% static 'images/llama_profile.png' %}" alt="profile_llama">
+        <img src="{% static 'main/images/llama_profile.png' %}" alt="profile_llama">
     </div>
     <div id="container">
         <div id="container-head">
-            <img id="chat-box-toggle" src="{% static 'images/llama_profile.png' %}" alt="profile_llama">
+            <img id="chat-box-toggle" src="{% static 'main/images/llama_profile.png' %}" alt="profile_llama">
             <div>
                 <h2>{% translate "Chat with Llama3" %}</h2>
             </div>
@@ -17,6 +17,6 @@
             <textarea id="input-chat" name="input-chat" value="input-chat" placeholder="{% translate 'Type your message' %}" rows="1"></textarea>
         </div>
     </div>
-    <script src="{% static 'js/llama_chat.js' %}"></script>
+    <script src="{% static 'main/js/llama_chat.js' %}"></script>
 </footer>
 
