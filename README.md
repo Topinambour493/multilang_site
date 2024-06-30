@@ -13,7 +13,7 @@ cd poetry-multilang-site
 poetry install
 ```
 
-Remplir le .env avec vos propres variables en vous basant sur le .env-example présent dans le dossier multilang-site
+Remplir le .env avec vos propres variables en vous basant sur le .env-example présent dans le dossier multilang-site ( pour recuperer un token replicate : https://replicate.com/account/api-tokens )
 
 Toutes les commandes suivantes sont à executer dans le dossier *poetry-multilang-site*
 
