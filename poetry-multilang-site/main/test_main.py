@@ -2,11 +2,9 @@ from django.test import TestCase
 from django.urls import reverse
 from django.utils import timezone
 
-
 from django.utils.translation import activate
 
 from .models import Article
-
 
 class IndexViewTests(TestCase):
     def test_no_article(self):
@@ -33,7 +31,6 @@ class IndexViewTests(TestCase):
         article2 = Article.objects.create(title="test2", content="it's test time", publication_date=timezone.now(), image="images_articles/test2.jpg", template_type=2)
         response = self.client.get(reverse('main:index'))
         self.assertQuerysetEqual(response.context['articles'], [article1, article2], ordered=False)
-
 
 class DetailViewTest(TestCase):
 

@@ -1,0 +1,30 @@
+main{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+h1{
+    align-self: center;
+}
+
+p {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 800px;
+    align-self: flex-start;
+    white-space: normal;
+}
+
+.contain{
+    align-self: center;
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: contain;
+}
+
+#article{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
