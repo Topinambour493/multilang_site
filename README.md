@@ -1,5 +1,7 @@
 # multilang_site
 
+Le multilang site tourne sur python3.10
+
 Installer poetry
 ```
 pip install poetry
@@ -15,16 +17,23 @@ Remplir le .env avec vos propres variables en vous basant sur le .env-example pr
 
 Toutes les commandes suivantes sont à executer dans le dossier *poetry-multilang-site*
 
-Pour se créer un utlisateur admin qui pourra notamment éditer des articles et traduire:
-```
-poetry run  python manage.py createsuperuser
-```
 Pour migrer les modeles dans la base de données
 ```
 poetry run python manage.py migrate
+```
+
+Pour se créer un utlisateur admin qui pourra notamment éditer des articles et traduire:
+```
+poetry run  python manage.py createsuperuser
 ```
 
 Pour lancer le projet 
 ```
 poetry run python manage.py runserver
 ```
+
+Pour lancer les tests
+```
+poetry run python manage.py test
+```
+
